@@ -6,6 +6,8 @@ name: Docker ghcr.io
 # documentation.
 
 on:
+  schedule:
+    - cron: "0 2 * * *" # every day
   push:
     branches: [main]
     # Publish semver tags as releases.
@@ -41,7 +43,7 @@ jobs:
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN }}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
